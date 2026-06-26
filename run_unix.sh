@@ -2,6 +2,9 @@
 # ===================================================================
 #  One-click launcher for Linux and macOS.
 #
+#  Chess with a graphical board: play a friend hot-seat or against the
+#  built-in computer opponent (you choose at the start of each game).
+#
 #  Run it from a terminal:   ./run_unix.sh
 #  (If it is not executable yet:   chmod +x run_unix.sh )
 #

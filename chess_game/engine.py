@@ -205,6 +205,31 @@ class Chess:
                 legal.append((tr, tc))
         return legal
 
+    def all_legal_moves(self):
+        """Return every legal move for the side to move as ``(fr, fc, tr, tc)``."""
+        moves = []
+        for r in range(8):
+            for c in range(8):
+                if player_of(self.board[r][c]) == self.turn:
+                    for tr, tc in self.legal_moves(r, c):
+                        moves.append((r, c, tr, tc))
+        return moves
+
+    def clone(self):
+        """Return a deep-enough copy of this game for AI search.
+
+        Copies the mutable board / castling state so a search can make and
+        explore moves on the copy without disturbing the real game.
+        """
+        new = Chess.__new__(Chess)
+        new.board = [row[:] for row in self.board]
+        new.turn = self.turn
+        new.ep = self.ep
+        new.castle = {"w": self.castle["w"][:], "b": self.castle["b"][:]}
+        new.status = self.status
+        new.over = self.over
+        return new
+
     def has_any_legal(self, pl):
         """Return ``True`` if player *pl* has at least one legal move."""
         old = self.turn

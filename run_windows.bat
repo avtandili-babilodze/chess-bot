@@ -2,6 +2,9 @@
 REM ===================================================================
 REM  One-click launcher for Windows.
 REM
+REM  Chess with a graphical board: play a friend hot-seat or against the
+REM  built-in computer opponent (you choose at the start of each game).
+REM
 REM  Double-click this file to play. If Python is not installed it will
 REM  try to install it automatically (via winget, or by downloading the
 REM  official installer). Tkinter ships with Python, so nothing else is

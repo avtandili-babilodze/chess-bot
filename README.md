@@ -1,6 +1,6 @@
 # Chess
 
-A two-player (hot-seat) chess game with a graphical board, written in pure Python with **tkinter**. No third-party libraries required.
+A chess game with a graphical board, written in pure Python with **tkinter**. Play hot-seat against a friend or against a **built-in AI opponent**. No third-party libraries required.
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
@@ -19,6 +19,7 @@ A two-player (hot-seat) chess game with a graphical board, written in pure Pytho
 
 ## Features
 
+- **Computer opponent** with four difficulty levels (Easy → Master) — pick your colour at the start of every game
 - Full legal-move enforcement for every piece
 - Castling (kingside & queenside)
 - En passant captures
@@ -31,11 +32,13 @@ A two-player (hot-seat) chess game with a graphical board, written in pure Pytho
 
 ## How to Play
 
-1. **White moves first.** White pieces start at the bottom, black at the top.
-2. **Click one of your pieces** — it highlights and shows every legal destination with a yellow square or dot.
-3. **Click a highlighted square** to move there.
-4. When a pawn reaches the far rank, a dialog lets you pick the promotion piece.
-5. The status bar shows whose turn it is, and announces check, checkmate or stalemate.
+1. **At the start of each game** a window asks how you want to play: *Play vs Computer* (choose your colour and difficulty) or *Two Players*. The same prompt appears whenever you click **New Game**.
+2. **White moves first.** White pieces start at the bottom, black at the top.
+3. **Click one of your pieces** — it highlights and shows every legal destination with a yellow square or dot.
+4. **Click a highlighted square** to move there.
+5. When a pawn reaches the far rank, a dialog lets you pick the promotion piece.
+6. When playing the computer, the status bar reads *"Computer is thinking…"* while it searches; the board stays responsive.
+7. The status bar shows whose turn it is, and announces check, checkmate or stalemate.
 
 ---
 
@@ -76,6 +79,7 @@ chess-bot/
 │   ├── __init__.py      # package exports (Chess, GUI)
 │   ├── pieces.py        # board constants, glyphs and colour helpers
 │   ├── engine.py        # rules engine (no GUI) — Chess class
+│   ├── bot.py           # the AI opponent — alpha-beta search, Bot class
 │   └── gui.py           # tkinter window — GUI class
 ├── main.py              # entry point
 ├── run_windows.bat      # one-click launcher for Windows
