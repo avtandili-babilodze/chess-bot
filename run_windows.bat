@@ -50,6 +50,17 @@ if not defined PYLAUNCH (
 
 REM --- 4. Run the game -----------------------------------------------
 :run
+%PYLAUNCH% -c "import tkinter" >nul 2>nul
+if %errorlevel% neq 0 (
+    echo.
+    echo Python is installed but Tkinter is missing, so the window
+    echo cannot open. Re-run the Python installer and make sure
+    echo "tcl/tk and IDLE" is selected, then run this file again.
+    echo.
+    pause
+    exit /b 1
+)
+
 echo Starting Chess...
 %PYLAUNCH% main.py
 if %errorlevel% neq 0 (
