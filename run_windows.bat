@@ -26,14 +26,14 @@ echo connection and may ask for permission)...
 echo.
 
 where winget >nul 2>nul
-if "%errorlevel%"=="0" (
+if "!errorlevel!"=="0" (
     echo Installing Python via winget...
     winget install -e --id Python.Python.3.12 --scope user --accept-package-agreements --accept-source-agreements
 ) else (
     echo winget is not available. Downloading the official installer...
     set "INSTALLER=%TEMP%\python-setup.exe"
     powershell -NoProfile -Command "Invoke-WebRequest -Uri 'https://www.python.org/ftp/python/3.12.4/python-3.12.4-amd64.exe' -OutFile '%TEMP%\python-setup.exe'"
-    echo Installing Python (this may take a minute)...
+    echo Installing Python ^(this may take a minute^)...
     "%TEMP%\python-setup.exe" /quiet InstallAllUsers=0 PrependPath=1 Include_launcher=1
     del "%TEMP%\python-setup.exe" >nul 2>nul
 )
@@ -54,7 +54,7 @@ echo Using Python: %PYLAUNCH%
 %PYLAUNCH% -c "import sys; print('Python', sys.version.split()[0], 'at', sys.executable)"
 echo.
 %PYLAUNCH% -c "import tkinter" >nul 2>nul
-if not "%errorlevel%"=="0" (
+if not "!errorlevel!"=="0" (
     echo Python is installed but Tkinter is missing, so the window
     echo cannot open. Re-run the Python installer and make sure
     echo "tcl/tk and IDLE" is selected, then run this file again.
@@ -63,7 +63,7 @@ if not "%errorlevel%"=="0" (
 
 echo Starting Chess...
 %PYLAUNCH% main.py
-set "EXITCODE=%errorlevel%"
+set "EXITCODE=!errorlevel!"
 echo.
 echo Chess has closed ^(exit code %EXITCODE%^).
 if not "%EXITCODE%"=="0" echo If a Python error is shown above, please report it.
