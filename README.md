@@ -13,7 +13,7 @@ A chess game with a graphical board, written in pure Python with **tkinter**. Pl
 | Platform | How to run |
 |----------|------------|
 | **Windows** | Double-click `run_windows.bat` — Python installs itself if needed |
-| **macOS / Linux** | `python3 main.py` |
+| **macOS / Linux** | `./run_unix.sh` — Python & tkinter install themselves if needed |
 
 ---
 
@@ -63,7 +63,19 @@ Double-click **`run_windows.bat`**.
 
 If Python is not installed, the script installs it automatically — first via Windows' built-in `winget`, otherwise by downloading the official installer from python.org. An internet connection and a permission prompt may be required. Tkinter comes bundled, so nothing else is needed.
 
-### macOS / Linux — command line
+### macOS / Linux — one command
+
+From a terminal in the project folder:
+
+```bash
+./run_unix.sh
+```
+
+If it is not executable yet, run `chmod +x run_unix.sh` first.
+
+Like the Windows launcher, this installs everything it needs automatically. Installing system software on Linux/macOS requires administrator rights, so the script will ask for your password (`sudo`) when it has to install Python or tkinter. If you would rather install them yourself, add `python3` and `python3-tk` (see [Requirements](#requirements)) and the script will skip straight to launching the game.
+
+Already have Python 3 and tkinter? You can also run the game directly:
 
 ```bash
 python3 main.py
@@ -82,6 +94,7 @@ chess-bot/
 │   ├── bot.py           # the AI opponent — alpha-beta search, Bot class
 │   └── gui.py           # tkinter window — GUI class
 ├── main.py              # entry point
+├── run_unix.sh          # one-command launcher for macOS / Linux
 ├── run_windows.bat      # one-click launcher for Windows
 └── README.md
 ```
