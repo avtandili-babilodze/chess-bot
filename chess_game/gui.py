@@ -16,9 +16,9 @@ from chess_game.pieces import UNICODE, is_white, player_of
 # Difficulty presets: (search-depth cap, time budget in seconds).
 DIFFICULTIES = {
     "Easy": (2, 1.0),
-    "Medium": (3, 2.0),
-    "Hard": (5, 4.0),
-    "Master": (7, 8.0),
+    "Medium": (4, 2.0),
+    "Hard": (7, 4.0),
+    "Master": (10, 8.0),
 }
 
 
